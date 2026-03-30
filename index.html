@@ -52,6 +52,7 @@
         .lock-box {
             text-align: center;
             padding: 40px;
+            max-width: 350px;
             background: var(--paper);
             box-shadow: 0 10px 30px var(--shadow);
             border-radius: 8px;
@@ -60,6 +61,14 @@
 
         .lock-box h2 { font-family: 'Dancing Script', cursive; font-size: 2.2rem; margin-bottom: 20px; color: var(--accent); }
         
+        .welcome-text {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            color: var(--text);
+            font-style: italic;
+        }
+
         .lock-box input {
             padding: 12px;
             width: 220px;
@@ -87,8 +96,8 @@
 
         /* Contenedor del Libro */
         .book-container {
-            width: 90%;
-            max-width: 800px;
+            width: 95%;
+            max-width: 850px;
             margin: 50px 0;
             background: var(--paper);
             min-height: 80vh;
@@ -115,7 +124,7 @@
         
         .index-list { list-style: none; padding: 0; max-width: 500px; margin: 0 auto; }
         .index-item { 
-            padding: 15px 0; border-bottom: 1px dashed var(--gold); 
+            padding: 12px 0; border-bottom: 1px dashed var(--gold); 
             cursor: pointer; transition: 0.3s; display: flex; justify-content: space-between;
             font-family: 'Playfair Display', serif;
         }
@@ -132,7 +141,7 @@
         .theme-switch {
             position: fixed; top: 20px; right: 20px; background: var(--paper);
             border: 1px solid var(--gold); padding: 8px 15px; border-radius: 20px;
-            cursor: pointer; z-index: 100; color: var(--text);
+            cursor: pointer; z-index: 100; color: var(--text); font-size: 0.8rem;
         }
 
         ul { padding-left: 20px; margin-bottom: 20px; }
@@ -144,6 +153,7 @@
     <div id="lock-screen">
         <div class="lock-box">
             <h2>Acceso al Guardián</h2>
+            <p class="welcome-text">Bienvenida a este pequeño espacio digital, diseñado con la paciencia de quien cuenta las estrellas y el cariño de quien guarda cada recuerdo en una caja de cristal.</p>
             <input type="text" id="passwordInput" placeholder="Escribe la clave..." onkeypress="if(event.key === 'Enter') checkPassword()">
             <button onclick="checkPassword()">Entrar</button>
             <p id="errorMessage" style="color: var(--accent); font-size: 0.85rem; margin-top: 15px; display: none;">Clave incorrecta, Señorita.</p>
@@ -174,7 +184,8 @@
                 <li class="index-item" onclick="goToPage(7)"><span>Cap. 4 - El Mapa de las Aventuras</span><span>04</span></li>
                 <li class="index-item" onclick="goToPage(8)"><span>Cap. 5 - El Protocolo del Cuidado</span><span>05</span></li>
                 <li class="index-item" onclick="goToPage(9)"><span>Cap. 6: Epílogo</span><span>06</span></li>
-                <li class="index-item" onclick="goToPage(10)"><span>Contraportada</span><span>VII</span></li>
+                <li class="index-item" onclick="goToPage(10)"><span>Cap. 7: Relato</span><span>07</span></li>
+                <li class="index-item" onclick="goToPage(11)"><span>Contraportada</span><span>VIII</span></li>
             </ul>
         </div>
 
@@ -192,49 +203,69 @@
 
         <div class="page" id="p4">
             <h2>Capítulo 1 – La Geografía de lo Genuino</h2>
-            <p>A veces al leer libros te detienes a pensar y analisas las cosas mas de lo normal con una sola hoja sacas mucha información que analizar. Pero en esta parte quiero que mientras lees estas líneas, estos textos entiendas primero que nada que tu valor no es una cifra negociable y tampoco estándar de redes sociales tu vales billones de millones por esa humanidad sentimental que te desborda, por tu terquedad que es en realidad una brújula propia, si el mundo insiste en que la belleza es perfection pues yo te digo que la tuya es la belleza de la realidad que aun con esas espinillas que a veces te aparecen son solo pequitas de vida que te hacen humana y te prometo que te ves hermosa con ellas aun con las grandes y dolorosas.
-
-            y quiero decirte que si para otros eres valiosa para mí vales el triple y eres una chica que quiero siemrpe en mi vida la personita que nunca quiero perder, dicen que uno no sabe lo que tiene hasta que lo pierde.
-
+            <p>(Capítulo 1 – La Geografía de lo Genuino)
+            ​A veces al leer libros te detienes a pensar y analisas las cosas mas de lo normal con una sola hoja sacas mucha información que analizar. Pero en esta parte quiero que mientras lees estas líneas, estos textos entiendas primero que nada que tu valor no es una cifra negociable y tampoco estándar de redes sociales tu vales billones de millones por esa humanidad sentimental que te desborda, por tu terquedad que es en realidad una brújula propia, si el mundo insiste en que la belleza es perfección pues yo te digo que la tuya es la belleza de la realidad que aun con esas espinillas que a veces te aparecen son solo pequitas de vida que te hacen humana y te prometo que te ves hermosa con ellas aun con las grandes y dolorosas.
+            
+            ​y quiero decirte que si para otros eres valiosa para mí vales el triple y eres una chica que quiero siemrpe en mi vida la personita que nunca quiero perder, dicen que uno no sabe lo que tiene hasta que lo pierde.
+            
             Pues imagínate yo que haria si te pierdo que si se lo que tengo y a quien tengo sin perderte </p>
         </div>
 
         <div class="page" id="p5">
             <h2>Capítulo 2 – La Medicina de las Mañanas</h2>
-            <p>Buenos dias inicio del dia y no tienes idea lo lindo empcionante positivo que se siente despertar y encontrar un mensaje de buenos dias tuyo son detalles quente llenan de vida y te recuerdan porque te levantas temprano, los dias en que no estas de noche y llebamos turno juntos es la chispa que hace que me aregle bien para ir a trabajar aun con poco tiempo pero sin duda alguna mi momento favorito, el punto exacto donde la jornada cobra sentido, es cuando te veo y me das un pequeño abrazo, esos abrazos de la mañana no son solo un gesto; son mi medicina mi energizante mi vitamina, Es como si el cansancio del día anterior se borrara al sentirte cerca.
-            Cada vez que nos vamos al gimnasio, no estoy solo entrenando; estoy disfrutando de tu presencia. Y esas salidas a comer después, donde nuestra rutina juntos el cansancio y las risas, son mis rituales favoritos y muchas gracias por permitirme ser quien te acompaña en el día a día el que te cuida y te ayuda el que aveces te enseña pero tambien aprendo de ti y mucho y aprendo por ti tambien eres un gran incentivo a mejorar y siempre estar aprendiendo cosas nuevas que me sirven para aprender y cuidarte en cualquier situación o sircustancia
-
+            <p>(Capítulo 2 – La Medicina de las Mañanas)
+            Buenos dias inicio del dia y no tienes idea lo lindo empcionante positivo que se siente despertar y encontrar un mensaje de buenos dias tuyo son detalles quente llenan de vida y te recuerdan porque te levantas temprano, los dias en que no estas de noche y llebamos turno juntos es la chispa que hace que me aregle bien para ir a trabajar aun con poco tiempo pero sin duda alguna mi momento favorito, el punto exacto donde la jornada cobra sentido, es cuando te veo y me das un pequeño abrazo, esos abrazos de la mañana no son solo un gesto; son mi medicina mi energizante mi vitamina, Es como si el cansancio del día anterior se borrara al sentirte cerca.
+            ​Cada vez que nos vamos al gimnasio, no estoy solo entrenando; estoy disfrutando de tu presencia. Y esas salidas a comer después, donde nuestra rutina juntos el cansancio y las risas, son mis rituales favoritos y muchas gracias por permitirme ser quien te acompaña en el día a día el que te cuida y te ayuda el que aveces te enseña pero tambien aprendo de ti y mucho y aprendo por ti tambien eres un gran incentivo a mejorar y siempre estar aprendiendo cosas nuevas que me sirven para aprender y cuidarte en cualquier situación o sircustancia
+            
             Mil gracias enserió por formar parte de mi vida y permitirme ser parte de tu vida y tus dias </p>
         </div>
 
         <div class="page" id="p6">
             <h2>Capítulo 3 – La Resiliencia</h2>
-            <p>Hemos superado problemas que a otros los habrían hecho rendirse. Pero tú, con tu carácter fuerte y tu necedad encantadora, siempre sales adelante. Me impresiona tu capacidad de levantarte. Recuerda que no importa qué tan grande sea el desafío, no lo enfrentas sola. Juntos somos, simplemente, mejores.</p>
+            <p>(Capítulo 3 – La Resiliencia)
+            ​Hemos superado problemas que a otros los habrían hecho rendirse. Pero tú, con tu carácter fuerte y tu necedad encantadora, siempre sales adelante. Me impresiona tu capacidad de levantarte. Recuerda que no importa qué tan grande sea el desafío, no lo enfrentas sola. Juntos somos, simplemente, mejores.</p>
         </div>
 
         <div class="page" id="p7">
             <h2>Capítulo 4 - El Mapa de las Aventuras</h2>
-            <p>Pues a llegado el momento de hablar de nuestra lista de planes ya que es la prueba de que nuestro futuro es grande y activo ya que tenemos planes como</p>
+            <p>(Capítulo 4 - El Mapa de las Aventuras)</p>
             <ul>
                 <li><strong>Guatemala:</strong> donde cruzaremos no solo fronteras sino que también de experiencias.</li>
                 <li><strong>Puerta del Diablo:</strong> Estaré ahí para sostenerte ya que la altura no importa si es a tu lado cualquier temor desaparece si es para protegerte y cuidarte</li>
-                <li><strong>Karaoke:</strong> Seré tu fan número uno incluso cuando desafinemos juntos subiremos al escenario y cantaremos como si fuéramos 2 profesionales frente al público dando un gran concierto </li>
-                <li><strong>Skydeck y Coffee Lake:</strong> Lugares que veré distinto porque los veré a través de tus ojos desde las alturas y sentir el viento hasta un cafe en el lago y hasta andar en moto de agua sin peligro de chocar </li>
+                <li><strong>Karaoke:</strong> Seré tu fan número uno incluso cuando desafinemos juntos subiremos al escenario y cantaremos como si fuéramos 2 profesionales frente al público dando un gran concierto</li>
+                <li><strong>Skydeck y Coffee Lake:</strong> Lugares que veré distinto porque los veré a través de tus ojos desde las alturas y sentir el viento hasta un cafe en el lago y hasta andar en moto de agua sin peligro de chocar</li>
             </ul>
         </div>
 
         <div class="page" id="p8">
             <h2>Capítulo 5 - El Protocolo del Cuidado</h2>
-            <p>La parte más difícil de mi día es cuando el tiempo nos obliga a separarnos. Ir a dejarte a la parada del bus o esperar el Indriver es un ejercicio de paciencia y mucha preocupación. Mi mente no descansa hasta que sé que has cruzado la puerta de tu casa. Mi cuidado por ti no conoce horarios; estoy pendiente de cada cosita que necesites, hoy, mañana y siempre sin importar la hora o lo que este haciendo tu siempre te mantienes en mis pensamientos intentando ser mi mejor versión con tigo te quiero y enserió solo quiero lo mejor para ti verte feliz es mi mejor recompensa de mi esfuerzo por cuidarte cada dia aunque sea por mensajes gracias por permitirme hacerte un poquito mejor los dias y por dejarme cuidarte sabes que en cualquier momento que me necesites estare para ti tu solo llámame y mi tiempo y atención sera tuyo mi lis</p>
+            <p>(Capítulo 5 - El Protocolo del Cuidado)
+            ​La parte más difícil de mi día es cuando el tiempo nos obliga a separarnos. Ir a dejarte a la parada del bus o esperar el Indriver es un ejercicio de paciencia y mucha preocupación. Mi mente no descansa hasta que sé que has cruzado la puerta de tu casa. Mi cuidado por ti no conoce horarios; estoy pendiente de cada cosita que necesites, hoy, mañana y siempre sin importar la hora o lo que este haciendo tu siempre te mantienes en mis pensamientos intentando ser mi mejor versión con tigo te quiero y enserió solo quiero lo mejor para ti verte feliz es mi mejor recompensa de mi esfuerzo por cuidarte cada dia aunque sea por mensajes gracias por permitirme hacerte un poquito mejor los dias y por dejarme cuidarte sabes que en cualquier momento que me necesites estare para ti tu solo llámame y mi tiempo y atención sera tuyo mi lis</p>
         </div>
 
         <div class="page" id="p9">
             <h2>Capítulo 6: Epílogo</h2>
-            <p>Eres mi niña preciosa, mi compañera de batallas mi gymcrush y la persona que elijo consentir a cada hora de cada dia, Gracias por dejarme ser parte de tu mundo Lissette Alexandra Jovel Cornejo te quiero demasiado ya llevamos una parte de esto llamado libro la verdad no se si voy bien o mal solo redacto una historia pensamientos y sentimientos ya que esto es una prueba del cariño amor e importancia que tienes tu para mi y se que en ocasiones por querer hacerte bien o abrirte los ojitos bellos y hermosos te e terminado haciendo sentir mal o enojando pero te pido mil disculpas sabes que lo que ago es por ti por que estes bien o por buscar tu aprobación en ocasiones si quiero pasar demasiado tiempo con con tigo o busco tu atención es por eso por eso poco a poco trabajando para mejorar cada dia y poder brindarte mi mejor versión </p>
+            <p>(Capítulo 6: Epílogo)
+            ​Eres mi niña preciosa, mi compañera de batallas mi gymcrush  y la persona que elijo consentir a cada hora de cada dia, Gracias por dejarme ser parte de tu mundo Lissette Alexandra Jovel Cornejo te quiero demasiado ya llevamos una parte de esto llamado libro la verdad no se si voy bien o mal solo redacto una historia pensamientos y sentimientos ya que esto es una prueba del cariño amor e importancia que tienes tu para mi y se que en ocasiones por querer hacerte bien o abrirte los ojitos bellos y hermosos te e terminado haciendo sentir mal o enojando pero te pido mil disculpas sabes que lo que ago es por ti por que estes bien o por buscar tu aprobación en ocasiones si quiero pasar demasiado tiempo con tigo o busco tu atención es por eso por eso poco a poco trabajando para mejorar cada dia y poder brindarte mi mejor versión </p>
         </div>
 
         <div class="page" id="p10">
-            <h2 style="border:none;">~ Fin del Recorrido ~</h2>
+            <h2>Capítulo 7: Relato</h2>
+            <p>muy bien hasta el momento siento que el libro se a quedado corto y esto lo escribo otro dia despues que pasaramos por varias coasa pues esto es del primer reclamo que te e echo la verdad me dolio sentia que si te decia algo te podia llegar a perder de manera inmediata pero ahora estoy mas tranquilo siento que somos un gran equipo y siento que tenemos buena comunicacion aunque no siempre la usamos jaja pero es lo bueno no? que cualquier cosa lo podremos hablar y se que terminaremos resolviendolo esta parte del libro ya es mas extensa ya que aqui comienxa a contar una historia y puede que se pierda un poco el formato que veia dandole aqui ya es mas como un libro de histroria pero esta historia no es solo mia ni tuya si no que es una historia mutua es una historia que juntos hemos forjado este no es un libro cualquiera es nuestro libro lo ideal siento que lo hicieramos juntos pero ya veremos que sucede luego como siempre hacemos y me gusta ya que por eso hemos hecho y pasado por grandes cosas y grandes momentos no somos rutinarios y es lo bueno siemrpe estamos haciendo cosas nuevas o pasando por diferentes cosas siempre hay una sorpresa cada dia nos veamos o no siempre nos sucede algo unico y bonito porque despues de nuestras tormentas tenemos calma y deverdad e tenido amistades bonitas con mucha confianza incluso mas de la que tenemos nosotros pero de algo si estoy seguro y se que es asi ninguna a sido como la uestra lo de nostros es otra cosa otro level jajaja esta parte siento que es la mas sincera de toda la parte de este libro ya que aqui estoy escribiendo con el corazon sin analizar tanto las cosas perdon si derrepente comienzo a escribir muy sentimental pero es lo bueno de un libro no? el sentimiento que transmite. 
+            
+            recuerdo el dia en que te conoci jajaja saliendo de turno de 10 a 6 ya estaba oscuro de echo y me queria ir jajajaja y en eso llegaste tu iniciando turno de noche y sin saber nada de ti me tramitiste una vibra o una sensacion buena no se eso que siento de pasar tiempo con tigo lo senti desde el primer dia literal senti la coneccion con tigo desde el primer momento de echo tanto era asi que la ota ves que te vi confundi tu nombre jajaja y alli fue que empezamos a hablar realmente no recuerdo la fecha ni la fecha de nuestro primer mensaje lastimosamente ya no tengo todo eso en el cel pero lo recuerdo en mi memoria la cual es mala jajaja pero cuendo un recuerdo llega al corazon se mantiene alli y bueno empezamos a hablar alli pude ver tus ojos por primera ves esos ojos que hasta la fecha me encanta cruzarle mirada esos ojos brillosos cafes clarito que con la luz son mas casi como si fuera el mismo color de la miel tan bellos unos ojos que la primera ves que los vi me llamaron la atencion me dijeron esta chica es super linda y no es por tu fisico si no que fue al ver tus ojos la ventana al alma vi a una chica soñadora risueña con ganas de aprender cosas nuevas con ganas de tener adrenalina hacer cosas que quiere y no quedarse con las ganas y bueno luego hablamos de tu cel por el spen que no funcionaba y fue raro al halblar con tigo me senti bien no me senti nervioso ni nada luego te vi reir fue tan lindo que rieras con migo se sintio de nuevo la coneccion y luego los primeros mensajes jajaja no recuerdo que era pero seguro que era una escusa mia solo para poder hablarte mas o no recuerdo jajaja 
+            
+            despues comenzamos a hablar a salir a conocernos mas a tenernos mas cnfianza que la verdad siento que cada dia incrmenta mas literal del hospital eres la unica en la que confio en la que se que te puedo decir o contar cosas que a los demas no te fui agarrando cariño cada dia mas te quiero mucho por eso te cuido tanto quiero que sepas lo importante y especial que eres para mi cada que puedo por eso te lleno de detalles regalos desde una coca un chocalatito hasta regalos mas grandes si yo puedo te doy todo para demostrarte lo valiosa que eres para mi de verdad que para mi eres una chica que me importa mucho que me interesa que estes bien cada dia tanto asi que prefiero en ocasiones sufir o guardarme algo que me duelo o hace daño para no lastimarte a ti en ningun momento 
+            
+            con tigo aplicaria la frase ojala te hubiera conocido antes pero la verdad prefiero que las cosas se dieran como han pasasdo porque no se que podria ser diferente y quizas las no estuvieramos como ahora o estuvieramos mejor eso no se pero yo estoy feliz de como nos encontramos actualmente tu y yo te quiero te adoro se que sabes bien lo que yo siento por ti tambien eso implica bastante en mis decisiones aveces porque no las pienso simplemente dejo que mis emociones mi corazon las realiza
+            
+            este libro es de todo la verdad un regalo un detalle una confecion una historia y mucho mas por eso mismo te propongo que agamos una actualizacion luego y juntos terminemos el libro o hacer otro si te parece 
+            
+            te quiero demasiado enserio siento mil cosas por ti muy lindas y aveces cosas que me preocupan por sentirlas porque siento que por eso puedo terminar perdiendote me gustaria decirte muchas cosas la verdad no malas pero no se como lo tomarias por eso prefiero mantenerme igual y disfrutar cada momento que pasamos juntos y solo intentar demostrarte lo que te quiero por no decir lo que te amo, se que es una palabra fuerte para decirle a alguien pero es lo que siento y asi </p>
+        </div>
+
+        <div class="page" id="p11">
+            <h2 style="border:none;">~ Contraportada ~</h2>
             <p style="text-align: center; font-style: italic; margin-top: 50px;">
                 Este documento no contiene toda la verdad sobre lo que siento por ti, porque mi sentimiento no cabe en páginas. Contiene, sin embargo, la promesa de que, mientras la vida lo permita, estaré pendiente de cada paso que des. 
                 <br><br>
@@ -246,7 +277,7 @@
 
     <div class="nav">
         <button class="btn" id="prevBtn" onclick="changePage(-1)">Anterior</button>
-        <span id="pageIndicator" class="status-num">Página 1 de 11</span>
+        <span id="pageIndicator">Página 1 de 12</span>
         <button class="btn" id="nextBtn" onclick="changePage(1)">Siguiente</button>
     </div>
 
@@ -275,9 +306,7 @@
                     localStorage.setItem('libroAcceso', 'concedido');
                 }, 1000);
             } else {
-                const err = document.getElementById('errorMessage');
-                err.style.display = 'block';
-                err.classList.add('shake');
+                document.getElementById('errorMessage').style.display = 'block';
             }
         }
 
