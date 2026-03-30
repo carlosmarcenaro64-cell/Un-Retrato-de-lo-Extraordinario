@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lissette Alexandra: El Libro Abierto</title>
+    <style>
+        :root {
+            --paper: #f9f4e8;
+            --ink: #2b2b2b;
+            --border: #1a1a1a;
+        }
+
+        body {
+            background-color: #dcd6c8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Georgia', serif;
+        }
+
+        /* Contenedor del Libro Abierto */
+        .book-sketch {
+            position: relative;
+            width: 95%;
+            max-width: 800px;
+            height: 500px;
+            background: var(--paper);
+            border: 3px solid var(--border);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+            display: flex;
+            /* Efecto de pliegue central */
+            background-image: linear-gradient(to right, transparent 49%, #ccc 50%, transparent 51%);
+        }
+
+        /* Estética de bordes de páginas apiladas */
+        .book-sketch::before {
+            content: '';
+            position: absolute;
+            bottom: -10px; left: 5px; right: 5px;
+            height: 10px;
+            background: var(--paper);
+            border: 2px solid var(--border);
+            border-top: none;
+            z-index: -1;
+        }
+
+        .page {
+            flex: 1;
+            padding: 40px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .left-page { border-right: 1px solid rgba(0,0,0,0.1); }
+
+        h2 { color: #a32a2a; text-align: center; font-size: 1.2rem; }
+        p { line-height: 1.6; text-align: justify; font-size: 0.95rem; color: var(--ink); }
+
+        /* Controles */
+        .nav-controls {
+            position: absolute;
+            bottom: -60px;
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn {
+            background: var(--border);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: inherit;
+            transition: 0.3s;
+        }
+
+        .btn:hover { background: #444; }
+        
+        .page-num {
+            position: absolute;
+            bottom: 15px;
+            font-size: 0.8rem;
+            color: #888;
+        }
+        .left-page .page-num { left: 20px; }
+        .right-page .page-num { right: 20px; }
+
+        @media (max-width: 600px) {
+            .book-sketch { flex-direction: column; height: auto; min-height: 600px; background-image: none; }
+            .left-page { border-right: none; border-bottom: 2px solid #ccc; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="book-sketch">
+        <div class="page left-page" id="left-content">
+            </div>
+
+        <div class="page right-page" id="right-content">
+            </div>
+
+        <div class="nav-controls">
+            <button class="btn" onclick="prev()">Atrás</button>
+            <button class="btn" onclick="next()">Siguiente</button>
+        </div>
+    </div>
+
+<script>
+    const content = [
+        { title: "Portada", text: "<h1>Lissette Alexandra</h1><p style='text-align:center'>Un Retrato de lo Extraordinario</p><p style='text-align:center; margin-top:50px;'>Manual de un Guardián sobre la belleza de lo auténtico.</p>" },
+        { title: "Dedicatoria", text: "<p class='italic'>Para la niña de la sonrisa de plata y los ojos que recargan mi alma.</p><p>Este libro no es una historia terminada pero es el mapa de lo mucho que significas para mí.</p>" },
+        { title: "Carta de Intención", text: "<h3>Hola Lis</h3><p>He decidido escribir este intento de libro porque las palabras dichas se las lleva el viento, pero lo que se escribe queda guardado en el tiempo.</p>" },
+        { title: "El Valor", text: "<h3>Capítulo 1</h3><p>Tu valor no es una cifra negociable ni estándar de redes sociales. Vales billones por esa humanidad sentimental que te desborda.</p>" },
+        { title: "La Belleza", text: "<h3>Realidad</h3><p>La tuya es la belleza de la realidad. Aun con esas espinillas que a veces aparecen, te ves hermosa; son solo pequitas de vida.</p>" },
+        { title: "Mañanas", text: "<h3>Medicina</h3><p>Despertar y encontrar un mensaje de buenos días tuyo es la chispa que hace que la jornada cobre sentido.</p>" },
+        { title: "Abrazos", text: "<h3>Energía</h3><p>Tus abrazos de la mañana son mi medicina, mi energizante, mi vitamina. El cansancio se borra al sentirte cerca.</p>" },
+        { title: "Aventuras", text: "<h3>Planes</h3><p>Guatemala, la Puerta del Diablo, el Karaoke... cualquier temor desaparece si es para protegerte y cuidarte.</p>" },
+        { title: "Final", text: "<h3>Siempre</h3><p>Eres mi niña preciosa, mi compañera de batallas. Gracias por dejarme ser parte de tu mundo. Te quiero demasiado.</p>" }
+    ];
+
+    let currentIndex = 0;
+
+    function render() {
+        const left = document.getElementById('left-content');
+        const right = document.getElementById('right-content');
+
+        // Página Izquierda
+        left.innerHTML = `<h2>\${content[currentIndex].title}</h2>\${content[currentIndex].text}<span class="page-num">\${currentIndex + 1}</span>`;
+
+        // Página Derecha (si existe la siguiente)
+        if (currentIndex + 1 < content.length) {
+            right.innerHTML = `<h2>\${content[currentIndex+1].title}</h2>\${content[currentIndex+1].text}<span class="page-num">\${currentIndex + 2}</span>`;
+        } else {
+            right.innerHTML = "<div style='display:flex; justify-content:center; align-items:center; height:100%; font-size:3rem;'>❦</div>";
+        }
+    }
+
+    function next() {
+        if (currentIndex + 2 < content.length) {
+            currentIndex += 2;
+            render();
+        }
+    }
+
+    function prev() {
+        if (currentIndex - 2 >= 0) {
+            currentIndex -= 2;
+            render();
+        }
+    }
+
+    render();
+</script>
+
+</body>
+</html>
